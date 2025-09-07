@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="icon" href="th.jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainpage">
+        <div class="page" id="flipContainer">
+            <div class="front">
+                <h1>Welcome to the To-Do List Page</h1>
+                <button onclick="flipPage()" id="flippage">Flip the Page</button>
+                <h1 id="shahfa">Fathima Shahfa's To-Do List</h1>
+            </div>
+            <div class="back">
+                <center>
+                    <h1 id="one">To-Do List</h1>
+                </center>
+                <div id="days">
+                    <h2 id="two" style="text-align: center;">Monday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-monday" placeholder="Enter"></div>
+                            <div class="button"><button onclick="add('monday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-monday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="three">Tuesday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-tuesday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('tuesday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-tuesday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="four">Wednesday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-wednesday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('wednesday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-wednesday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="five">Thursday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-thursday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('thursday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-thursday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="six">Friday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-friday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('friday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-friday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="seven">Saturday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-saturday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('saturday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-saturday"></ul>
+                        </div>
+                    </h2>
+
+                    <h2 id="eight">Sunday
+                        <div class="list">
+                            <div class="dolist"><input type="text" id="input-sunday" placeholder="Enter"> </div>
+                            <div class="button"><button onclick="add('sunday')" id="addbutton">Add</button></div>
+                        </div>
+                        <div class="listuhal">
+                            <ul id="items-sunday"></ul>
+                        </div>
+                    </h2>
+
+                </div>
+                <button onclick="flipBack()" id="flipback">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function add(day) {
+            var input = document.querySelector(`#input-${day}`);
+            var taskValue = input.value.trim();
+
+            if (taskValue !== "") {
+                var ul = document.getElementById(`items-${day}`);
+                var li = document.createElement("li");
+                li.innerHTML = taskValue + "<button id='done' onclick='doneitem(event)'>Done</button>" + "<button id='delete' onclick='deleteitem(event)'>Delete</button>";
+                ul.appendChild(li);
+                input.value = "";
+            }
+        }
+
+        function deleteitem(event) {
+            event.target.parentElement.remove();
+        }
+        function doneitem(event) {
+            var li = event.target.parentElement;
+            li.style.textDecoration = "line-through";
+            event.target.disabled = true;
+        }
+        const addButton = document.getElementById('addbutton');
+        const dayList = document.getElementById('day-list');
+
+        function flipPage() {
+            const page = document.querySelector('.page');
+            page.classList.toggle('flip');
+        }
+        function flipBack(){
+            const page = document.querySelector('.page');
+            page.classList.toggle('flip');
+        }
+
+
+    </script>
+</body>
+
+</html>
